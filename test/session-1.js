@@ -1,3 +1,4 @@
+// Exercise Credit: Douglas Crockford
 import assert from 'assert';
 
 describe('JavaScript functions', function() {
