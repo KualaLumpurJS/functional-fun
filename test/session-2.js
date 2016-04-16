@@ -1,16 +1,17 @@
 // Exercise Credit: Douglas Crockford
 import assert from 'assert';
 
-describe('JavaScript functions', function() {
+describe('Session 2 Functions', function() {
   // You can use these functions in your solutions!
   const add = (a, b) => a + b;
   const mul = (a, b) => a * b;
   const identityf = a => (() => a);
-  let m, store;
+  let m, store, addc, mulc, sqrtc, hypc;
+  let storeVariable;
 
   describe('gensymf', () => {
     it('makes functions that generate unique symbols', () => {
-      const gensymf = () => {
+      const gensymf = (prefix) => {
         // YOUR CODE HERE
       };
       
@@ -22,7 +23,7 @@ describe('JavaScript functions', function() {
   });
   
   describe('fibonaccif', () => {
-    it('returns a function that will return the next fibbonacci number', () => {
+    it('returns a function that will return the next fibonacci number', () => {
       const fibonaccif = function(a, b) {
         // YOUR CODE HERE
       };
@@ -39,30 +40,30 @@ describe('JavaScript functions', function() {
   
   describe('addg', () => {
     it('adds from many invocations, until it sees an empty invocation', () => {
-      const addg = function() {
+      const addg = function(a) {
         // YOUR CODE HERE
       };
       
       assert.strictEqual(addg(3)(4)(5)(), 12);
-      assert.strictEqual(addg(1)(2)(4)(8), 15);
+      assert.strictEqual(addg(1)(2)(4)(8)(), 15);
     });
   });
   
   
   describe('applyg', () => {
     it('takes a binary function and applies it to many invocations', () => {
-      const applyg = function() {
+      const applyg = function(binary) {
         // YOUR CODE HERE
       };
 
       assert.strictEqual(applyg(add)(3)(4)(5)(), 12);
-      assert.strictEqual(applyg(add)(1)(2)(4)(8), 15);
+      assert.strictEqual(applyg(add)(1)(2)(4)(8)(), 15);
     });
   });
 
   describe('m', () => {
-    it('takes a value and an optional sourse string and returns them in an object', () => {
-      m = function() {
+    it('takes a value and an optional source string and returns them in an object', () => {
+      m = function(val, source) {
         // YOUR CODE HERE
       };
 
@@ -73,7 +74,7 @@ describe('JavaScript functions', function() {
 
   describe('addm', () => {
     it('takes two m objects and returns an m object', () => {
-      const addm = function() {
+      const addm = function(m1, m2) {
         // YOUR CODE HERE
       };
 
@@ -128,58 +129,63 @@ describe('JavaScript functions', function() {
 
   describe('exp', () => {
     it('evaluates array expressions', () => {
+      const exp = function (ary) {
+        // YOUR CODE HERE
+      };
+
+      const adda = [add, 2, 3];
       const hypa = [
         Math.sqrt,
         [
           add,
-          [mul, 3, 4],
-          [mul, 4, 4]
+          [mul, 4, 6],
+          [mul, 5, 5]
         ]
       ];
-    });
-    // wow this is powerful
 
-    assert.strictEqual(exp(hypa), 5);
+      assert.strictEqual(exp(adda), 5);
+      assert.strictEqual(exp(hypa), 7);
+    });
   });
 
   describe('store', () => {
     it('stores a value in a variable', () => {
-      let variable;
       store = function (a) {
         // YOUR CODE HERE
-        variable = a;
       };
       // a very primitive store
       store(5);
 
-      assert.strictEqual(variable, 5);
+      assert.strictEqual(storeVariable, 5);
     });
   });
 
-  describe('quartre', () => {
+  describe('quatre', () => {
     it('takes a binary function, two functions that provide operands, and a function that takes the result', () => {
-      let variable;
+      const quatre = function (binary, sourcefn1, sourcefn2, callback) {
+        // YOUR CODE HERE
+      };
+
       quatre(
         add,
         identityf(3),
         identityf(4),
         store
       );
-
-      assert.strictEqual(variable, 7);
+      assert.strictEqual(storeVariable, 7);
     });
   });
 
   describe('unaryc', () => {
     it('takes a unary function, and returns a function that takes an argument and a callback', () => {
-      const unaryc = function () {
+      const unaryc = function (unary) {
         // YOUR CODE HERE
       };
 
-      const sqrtc = unaryc(Math.sqrt);
-      sqrt(81, store);
+      sqrtc = unaryc(Math.sqrt);
+      sqrtc(81, store);
 
-      assert.strictEqual(variable, 9);
+      assert.strictEqual(storeVariable, 9);
     });
   });
 
@@ -189,25 +195,27 @@ describe('JavaScript functions', function() {
         // YOUR CODE HERE
       };
 
-      const addc = binaryc(add);
-      const mulc = binaryc(mul);
+      addc = binaryc(add);
+      mulc = binaryc(mul);
 
       addc(4, 5, store);
-      assert.strictEqual(variable, 9);
+      assert.strictEqual(storeVariable, 9);
       mulc(2, 3, store);
-      assert.strictEqual(variable, 6);
+      assert.strictEqual(storeVariable, 6);
     });
   });
 
   describe('hypc', () => {
     it('calculates the hypotenuse (write using addc, mulc, and sqrtc)', () => {
-      hypc = function() {
+      hypc = function(a, b, callback) {
         // YOUR CODE HERE
+        // Use only addc, mulc, and sqrtc. It really is possible!
       };
 
-      let variable;
       hypc(3, 4, store);
-      assert.strictEqual(variable, 5);
+      assert.strictEqual(storeVariable, 5);
     });
   });
 });
+
+// DONE? Great! Check out Ramda.js, a utility library that focuses on functional programming!

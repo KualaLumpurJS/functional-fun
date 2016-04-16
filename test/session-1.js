@@ -1,7 +1,7 @@
 // Exercise Credit: Douglas Crockford
 import assert from 'assert';
 
-describe('JavaScript functions', function() {
+describe('Session 1 Functions', function() {
   // You can use your earlier defined functions in later tests!
   let identity, add, mul, identityf, addf, applyf, curry, methodize, demethodize,
     twice, double, square, composeu, composeb, once, revocable, vector;
