@@ -4,7 +4,7 @@ import assert from 'assert';
 describe('Session 1 Functions', function() {
   // You can use your earlier defined functions in later tests!
   let identity, add, mul, identityf, addf, applyf, curry, methodize, demethodize,
-    twice, double, square, composeu, composeb, once, revocable, vector;
+    twice, double, square, composeu, composeb, once, counterf, revocable, vector;
 
   describe('function', function() {
     it('function parameter does not modify what the outside variable is pointing to', () => {
@@ -14,7 +14,7 @@ describe('Session 1 Functions', function() {
 
       let x = [];
       func(x);
-      assert.deepEqual(x, undefined);
+      assert.deepEqual(x, undefined); // <- edit me
 
       function swap(a, b) {
         let temp = a;
@@ -22,13 +22,13 @@ describe('Session 1 Functions', function() {
       }
       let a = 1, b = 2;
       swap(a, b);
-      assert.deepEqual(a, undefined);
+      assert.deepEqual(a, undefined); // <- edit me
     });
   });
 
   describe('identity', () => {
     it('takes an argument and returns that argument when called', () => {
-      identity = function(a, b) {
+      identity = function(a) {
         // YOUR CODE HERE
       };
 
@@ -108,9 +108,9 @@ describe('Session 1 Functions', function() {
   describe('inc', () => {
     it('takes an argument and increments it', () => {
       // Write three ways to create the inc function *without writing any new functions*
-      const inc1 = undefined;
-      const inc2 = undefined;
-      const inc3 = undefined;
+      const inc1 = undefined; // <- change me
+      const inc2 = undefined; // <- change me
+      const inc3 = undefined; // <- change me
 
       [inc1, inc2, inc3].forEach(inc => {
         assert.strictEqual(inc(1), 2);
